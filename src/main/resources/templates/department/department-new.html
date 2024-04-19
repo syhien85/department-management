@@ -1,0 +1,26 @@
+<html layout:decorate="~{template}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><title th:text="#{department.title.new}"></title></head>
+<body>
+<div layout:fragment="content">
+
+    <div th:replace="~{fragment :: breadcrumb ('/department/list', 'department.title.list')}"></div>
+
+    <h1 th:text="#{department.title.new}"><!--New Department--></h1>
+
+    <form class="form_post" th:action="@{/department/new}" method="post" enctype="multipart/form-data" th:object="${department}">
+        <!--<label>
+            <input type="number" name="id" placeholder="id...">
+        </label>--> <!-- id auto increment-->
+        <label>
+            <!--<span th:text="#{department.name}">Department Name</span>-->
+            <span th:text="#{department.name}"></span>
+            <small class="_validation">
+                <input type="text" th:field="*{name}"><!-- Validation field -->
+                <i class="_validation__error" th:errors="*{name}"></i><!-- Validation print errors -->
+            </small>
+        </label>
+        <button type="submit" th:text="#{global.btn.addNew}"></button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html layout:decorate="~{template}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><title th:text="#{ticket.title.list}"></title></head>
+<body>
+<div layout:fragment="content" class="content content_list">
+
+    <!-- Thymeleaf replace parameter from fragment -->
+    <div th:replace="~{fragment :: breadcrumb ('/ticket/list', 'ticket.title.list')}"></div>
+
+    <h1 th:text="#{ticket.title.list}"><!--List Ticket--></h1>
+
+    <div class="form_search d_flex">
+        <form th:action="@{/ticket/search}" method="get" th:object="${searchDTO}">
+            <label>
+                <span th:text="#{form.search.keyword}"></span>
+                <input th:field="*{keyword}" th:placeholder="#{form.search.keyword} + ...">
+                <p th:errors="*{keyword}"></p><!--validation: show message error-->
+            </label>
+            <label>
+                <span th:text="#{form.search.department}"></span>
+                <select th:field="*{departmentId}">
+                    <option value="" th:text="#{form.search.select}"></option>
+                    <option th:each="d : ${departmentList}" th:value="${d.id}" th:text="${d.name}"></option>
+                </select>
+            </label>
+            <label>
+                <span th:text="#{form.search.from}"></span>
+                <input type="text" th:field="*{start}" placeholder="dd/MM/yyyy">
+            </label>
+            <label>
+                <span th:text="#{form.search.to}"></span>
+                <input type="text" th:field="*{end}" placeholder="dd/MM/yyyy">
+            </label>
+            <input type="hidden" th:field="*{currentPage}" th:placeholder="#{form.search.currentPage}+...">
+            <input type="hidden" th:field="*{size}" th:placeholder="#{form.search.size}+...">
+            <input type="hidden" th:field="*{sortedField}" th:placeholder="#{form.search.sortedField}+...">
+            <button type="submit" th:text="#{form.search.searchBtn}"></button>
+        </form>
+        <div class="_new"><a th:href="@{/ticket/new}" th:text="#{ticket.title.new}"></a></div>
+    </div>
+    <div class="table_wrap_scroll">
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th th:text="#{ticket.clientName}"></th>
+                <th th:text="#{ticket.clientPhone}"></th>
+                <th th:text="#{ticket.content}"></th>
+                <th th:text="#{ticket.status}"></th>
+                <th th:text="#{ticket.processDate}"></th>
+                <th th:text="#{ticket.department}"></th>
+                <th th:text="#{global.table.action}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ticket : ${ticketList}">
+                <td th:text="${ticket.id}"></td>
+                <td th:text="${ticket.clientName}"></td>
+<!--                <td th:text="${ticket.clientPhone}"></td>-->
+                <td th:text="${#numbers.formatDecimal(ticket.clientPhone, 3, 'POINT', 0, 'COMMA')}"></td>
+                <td th:text="${ticket.content}"></td>
+                <td th:text="${ticket.status} ? 'Open' : 'Close'"></td>
+                <td th:text="${#dates.format(ticket.processDate, 'dd/MM/yyyy')}"></td><!--convert date-->
+                <td th:text="${ticket.department?.name}"></td>
+                <td>
+                    <a th:href="@{'/ticket/edit?id=' + ${ticket.id}}" th:text="#{global.edit}"></a> |
+                    <a th:href="@{'/ticket/delete?id=' + ${ticket.id}}" th:text="#{global.delete}"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <span><span th:text="#{global.pagination.totalPage}"></span>: <b th:text="${totalPage}"></b></span> |
+        <span><span th:text="#{global.pagination.totalElements}"></span>: <b th:text="${totalElements}"></b></span>
+    </div>
+</div>
+</body>
+</html>
+

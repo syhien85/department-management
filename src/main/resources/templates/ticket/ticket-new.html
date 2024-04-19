@@ -1,0 +1,45 @@
+<html layout:decorate="~{template}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><title th:text="#{ticket.title.new}"></title></head>
+<body>
+<div layout:fragment="content">
+
+    <div th:replace="~{fragment :: breadcrumb ('/ticket/list', 'ticket.title.list')}"></div>
+
+    <h1 th:text="#{ticket.title.new}"><!--New Ticket--></h1>
+
+    <form class="form_post" th:action="@{/ticket/new}" method="post" enctype="multipart/form-data" th:object="${ticket}">
+        <!--<label>
+            <input type="number" name="id" placeholder="id...">
+        </label>--> <!-- id auto increment-->
+        <label>
+            <span th:text="#{ticket.clientName}"></span>
+            <input type="text" name="clientName">
+        </label>
+        <label>
+            <span th:text="#{ticket.clientPhone}"></span>
+            <input type="number" name="clientPhone">
+        </label>
+        <label>
+            <span th:text="#{ticket.content}"></span>
+            <textarea name="content"></textarea>
+        </label>
+        <div class="_label _label_radio">
+            <span th:text="#{ticket.status}"></span>
+            <span><label><input type="radio" name="status" value="true" checked>Open</label></span>
+            <span><label><input type="radio" name="status" value="false">Close</label></span>
+        </div>
+        <label>
+            <span th:text="#{ticket.processDate}"></span>
+            <input type="text" name="processDate" placeholder="dd/MM/yyyy">
+        </label>
+        <label>
+            <span th:text="#{ticket.department}"></span>
+            <select name="department.id">
+                <option th:each="d : ${departmentList}" th:value="${d.id}" th:text="${d.name}"></option>
+            </select>
+        </label>
+        <button type="submit" th:text="#{global.btn.addNew}"></button>
+    </form>
+</div>
+</body>
+</html>

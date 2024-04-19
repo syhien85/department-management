@@ -1,0 +1,378 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strong,sub,sup,var,b,u,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;box-sizing:border-box}
+article,aside,details,figcaption,figure,footer,header,nav,section{display:block}
+body{line-height:1}
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote::before,blockquote::after,q::before,q::after{content:'';content:none}
+table{border-collapse:collapse;border-spacing:0}
+html{box-sizing:border-box}
+*,::before,::after{box-sizing:inherit}
+strong,b{font-weight:700}
+em{font-style:italic}
+h1{font-size:2rem}
+h2{font-size:1.5rem}
+h3{font-size:1.325rem}
+h4{font-size:1.125rem}
+h5,li{font-size:1rem}
+h6{font-size:.875rem}
+h1,h2,h3,h4,h5,h6{line-height:1.5;padding:.5rem 0}
+img{max-width:100%;height:auto;object-fit:cover;vertical-align:middle}
+/** End Reset CSS */
+
+/* @font-face {
+    src: url("../fonts/SVNGothamBlack.woff2");
+    font-family: SVNGotham;
+    font-display: swap;
+    font-weight: 700;
+}
+.ff_SVNGotham {
+    font-family: SVNGotham;
+} */
+/**================================================*/
+html{font-family:Roboto,Arial,sans-serif;font-size:16px}
+p{font-size:1rem;line-height:1.5}
+a{text-decoration:none}
+.container12{width:100%;margin:auto}
+.container1903::after,.container12::after{content:'';display:block;clear:both}
+.container12 .wrap{width:1170px;margin:auto}
+.container12 .wrap>div{width:1170px}
+.clearfix{clear:both}
+.d_flex{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-flow:wrap;flex-flow:wrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+@media screen and (min-width: 1170px){.d_mb{display: none}}
+@media screen and (max-width: 1169px){.d_pc{display: none}}
+/**================================================*/
+/** Responsive : Move to end css of Desktop*/
+@media screen and (max-width: 1169px) {
+    html{font-size:16px}
+    .container12,.container12 .wrap,.container12 .wrap>div{width:100%}
+    .container12 .wrap>div{max-width:480px;margin:auto;}
+    .container1903 .wrap>div{max-width:480px;margin:auto}
+}
+/**================================================*/
+/**================================================*/
+:root {
+    --color1: #00a651;
+}
+/**================================================*/
+.head1 .wrap>div {
+    padding: 12px 12px 12px;
+    border: 1px solid #777;
+    /*border-left: 1px solid #777;*/
+    /*border-right: 1px solid #777;*/
+}
+.header {
+    align-items: center;
+    justify-content: flex-start;
+}
+.header p {
+    margin-left: 12px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #555555;
+}
+.header .header_lang a {
+    color: #555555;
+}
+.header .header_lang a:hover {
+    color: var(--color1);
+}
+
+/**================================================*/
+.main .wrap > div {
+    border-left: 1px solid #777;
+    border-right: 1px solid #777;
+    border-bottom: 1px solid #777;
+}
+.main .sidebar {
+    width: 18%;
+}
+.main .content {
+    width: calc(100% - 18%);
+}
+
+.main .sidebar ul li {
+    font-size: 16px;
+    line-height: 1.5;
+    border-bottom: 1px solid #777;
+    position: relative;
+    padding: 12px 8px;
+    padding-left: 28px;
+}
+.main .sidebar ul li::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 18px;
+    width: 12px;
+    height: 12px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: none;
+}
+.main .sidebar ul li.active::before {
+    background: #00a651;
+}
+.main .sidebar ul li a {
+    display: inline-block;
+    color: #555;
+    font-weight: 500;
+}
+.main .sidebar ul li a:hover {
+    color: #00a651;
+}
+/*---*/
+.main .content {
+    padding: 16px;
+    border-left: 1px solid #777;
+}
+/*---*/
+.main .content .breadcrumb {
+    margin-bottom: 24px;
+}
+.main .content .breadcrumb a {
+    color: var(--color1);
+}
+.main .content .breadcrumb :hover {
+    color: #f58220;
+}/*---*/
+.main .content h1 {
+    margin-bottom: 24px;
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 600;
+    color: #555;
+}
+/*---*/
+.main .content .form_search {
+    align-items: flex-end;
+}
+.main .content .form_search form {
+    width: 83%;
+}
+.form_search form {
+    font-size: 14px;
+    display: flex;
+    flex-flow: wrap;
+    align-items: flex-end;
+}
+.form_search form label {
+    width: 18%;
+    display: inline-block;
+    margin-right: 8px;
+}
+.form_search form label:first-child {
+    width: 24%;
+}
+.form_search form label span {
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+    font-size: 14px;
+}
+
+.form_search form select,
+.form_search form textarea,
+.form_search form input {
+    font-size: 14px;
+    line-height: 1.3;
+    padding: 4px 8px;
+    border: 1px solid #777;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    max-width: 100%;
+}
+.form_search form button {
+    font-size: 15px;
+    line-height: 1.3;
+    padding: 4px 16px;
+    border: 1px solid #777;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.form_search form button:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+/*---*/
+.form_search ._new a {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.3;
+    padding: 4px 16px;
+    border: 1px solid #777;
+    border-radius: 4px;
+    color: var(--color1);
+}
+.form_search ._new a:hover {
+    border-color: var(--color1);
+    background-color: var(--color1);
+    color: #fff;
+}
+/*---*/
+.main .content table {
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border-collapse: collapse;
+}
+.main .content table th {
+    background: #ddd;
+    font-weight: bold;
+}
+.main .content table th,
+.main .content table td {
+    padding: 8px 8px;
+    vertical-align: middle;
+    border: 1px solid #bbb;
+    font-size: 15px;
+    line-height: 1.4;
+}
+.main .content table tr:nth-child(2n+1) {
+    background: #f6f6f6;
+}
+
+.main .content table td a {
+    color: var(--color1);
+}
+.main .content table td a:last-child {
+    color: #f00;
+}
+.main .content table td a:hover {
+    color: #f58220;
+}
+/*---*/
+.main .content .form_post {}
+.main .content .form_post ._label,
+.main .content .form_post label {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
+}
+.main .content .form_post ._label span:first-child,
+.main .content .form_post label span {
+    min-width: 140px;
+    display: inline-block;
+}
+.main .content .form_post ._label._label_radio {
+    display: flex;
+    margin: 24px 0;
+}
+.main .content .form_post ._label._label_radio label {
+    width: auto;
+    margin-right: 8px;
+    margin-bottom: 0;
+}
+.main .content .form_post select,
+.main .content .form_post textarea,
+.main .content .form_post input {
+    font-size: 16px;
+    line-height: 1.3;
+    padding: 4px 8px;
+    border: 1px solid #777;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.main .content .form_post button {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+    padding: 4px 8px;
+    border: 1px solid #777;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.main .content .form_post button:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+/* --- */
+.main .content .form_post label ._validation {
+    position: relative;
+}
+
+.main .content .form_post label ._validation__error {
+    position: absolute;
+    top: -44px;
+    background: #eee;
+    color: #f00;
+    width: 100%;
+    left: 0;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.main .content .form_post label ._validation__error::before {
+    content: "";
+    position:absolute;
+    left: calc(50% - 5px);
+    bottom: -9px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid #eee;
+    position: absolute;
+}
+/* --- */
+/**================================================*/
+/** Responsive : Move to end css of Desktop*/
+@media screen and (max-width: 1169px) {
+html{font-size:16px}
+.container12,.container12 .wrap,.container12 .wrap>div{width:100%}
+.container12 .wrap>div{max-width:480px;margin:auto;}
+.container1903 .wrap>div{max-width:480px;margin:auto}
+
+    /*============*/
+    .header {}
+    .header p {
+        width: calc(100% - 51px - 12px);
+        font-size: 18px;
+        line-height: 1.3;
+    }
+    /*============*/
+    .main .sidebar {
+        width: 100%;
+    }
+    .main .content {
+        width: 100%;
+        padding: 16px 12px;
+    }
+
+    /*---*/
+    .main .content .form_search form {
+        width: 100%;
+    }
+    .form_search form label {
+        width: 100%;
+    }
+    .form_search form label:first-child {
+        width: 100%;
+    }
+    .form_search form select, .form_search form textarea, .form_search form input {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .form_search form button {
+        display: block;
+        margin: auto;
+    }
+    .form_search ._new {
+        order: -1;
+        margin: 0px 0 16px auto;
+    }
+    /*---*/
+    .main .content .table_wrap_scroll {
+        width: 100%;
+        overflow: auto;
+    }
+    .main .content table th,
+    .main .content table td {
+        font-size: 13px;
+        padding: 4px 4px;
+    }
+}

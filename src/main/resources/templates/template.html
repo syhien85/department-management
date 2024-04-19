@@ -1,0 +1,42 @@
+<!-- template.html -->
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml" lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title layout:title-patten="$CONTENT_TITLE"></title>
+</head>
+<body>
+
+<!-- -------------------- .head1 ------------------ -->
+<section class="container12 head1">
+    <div class="wrap">
+        <div>
+            <div th:replace="~{/fragment::header}"></div>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------- .main ------------------ -->
+<section class="container12 main">
+    <div class="wrap">
+        <div class="d_flex">
+            <div th:replace="~{/fragment::sidebar}"></div>
+            <div class="content" layout:fragment="content"></div>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------- .footer ------------------ -->
+<section class="container12 footer">
+    <div class="wrap">
+        <div>
+            <div th:replace="~{/fragment::footer}"></div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

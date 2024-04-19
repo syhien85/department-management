@@ -1,0 +1,66 @@
+<html layout:decorate="~{template}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><title th:text="#{department.title.list}"></title></head>
+<body>
+<div layout:fragment="content">
+    <!-- Thymeleaf replace parameter from fragment -->
+    <div th:replace="~{fragment :: breadcrumb ('/department/list', 'department.title.list')}"></div>
+
+    <h1 th:text="#{department.title.list}"><!--List Department--></h1>
+
+    <div class="form_search d_flex">
+        <form th:action="@{/department/search}" method="get" th:object="${searchDTO}">
+            <label>
+                <span th:text="#{form.search.keyword}"></span>
+                <input th:field="*{keyword}" th:placeholder="#{form.search.keyword}+...">
+                <p th:errors="*{keyword}"></p>
+            </label>
+            <label>
+                <span th:text="#{form.search.currentPage}"></span>
+                <input th:field="*{currentPage}" th:placeholder="#{form.search.currentPage}+...">
+            </label>
+            <label>
+                <span th:text="#{form.search.size}"></span>
+                <input th:field="*{size}" th:placeholder="#{form.search.size}+...">
+            </label>
+            <label>
+                <span th:text="#{form.search.sortedField}"></span>
+                <select th:field="*{sortedField}">
+                    <option value="" th:text="#{form.search.select}"></option>
+                    <option value="id">id</option>
+                    <option value="name">name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                </select>
+            </label>
+            <button type="submit" th:text="#{form.search.searchBtn}"></button>
+        </form>
+        <div class="_new"><a th:href="@{/department/new}" th:text="#{department.title.new}"></a></div>
+    </div>
+    <div class="table_wrap_scroll">
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th th:text="#{department.name}"></th>
+                <th th:text="#{global.time.createdAt}"></th>
+                <th th:text="#{global.table.action}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="department : ${departmentList}">
+                <td th:text="${department.id}"></td>
+                <td th:text="${department.name}"></td>
+                <td th:text="${#dates.format(department.createdAt, 'dd/MM/yyyy')}"></td>
+                <td>
+                    <a th:href="@{'/department/edit?id=' + ${department.id}}" th:text="#{global.edit}"></a> |
+                    <a th:href="@{'/department/delete?id=' + ${department.id}}" th:text="#{global.delete}"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <span><span th:text="#{global.pagination.totalPage}"></span>: <b th:text="${totalPage}"></b></span> |
+        <span><span th:text="#{global.pagination.totalElements}"></span>: <b th:text="${totalElements}"></b></span>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<html layout:decorate="~{template}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><title>Welcome</title></head>
+<body>
+<div layout:fragment="content">
+    <h1>
+        <b>Welcome: </b>
+        <span th:text="${session.loginUser}"></span><!--get session-->
+    </h1>
+</div>
+</body>
+</html>

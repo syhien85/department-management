@@ -1,0 +1,25 @@
+<html layout:decorate="~{template}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><title th:text="#{department.title.edit}"></title></head>
+<body>
+<div layout:fragment="content">
+
+    <div th:replace="~{fragment :: breadcrumb ('/department/list', 'department.title.list')}"></div>
+
+    <h1 th:text="#{department.title.edit}"><!--Edit Department--></h1>
+
+    <form class="form_post" th:action="@{/department/edit}" method="post" th:object="${department}">
+        <label>
+            <input type="hidden" name="id" th:value="${department.id}" readonly>
+        </label>
+        <label>
+            <span th:text="#{department.name}"></span>
+            <small class="_validation">
+                <input type="text" th:field="*{name}"><!-- Validation field -->
+                <i class="_validation__error" th:errors="*{name}"></i><!-- Validation print errors -->
+            </small>
+        </label>
+        <button type="submit" th:text="#{global.btn.update}"></button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<html layout:decorate="~{template}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><title th:text="#{user.title.list}"></title></head>
+<body>
+<div layout:fragment="content">
+
+    <!-- Thymeleaf replace parameter from fragment -->
+    <div th:replace="~{fragment :: breadcrumb ('/user/list', 'user.title.list')}"></div>
+
+    <h1 th:text="#{user.title.list}"><!--List User--></h1>
+
+    <div class="form_search d_flex">
+        <form th:action="@{/user/search}" method="get" th:object="${searchDTO}">
+            <label>
+                <span th:text="#{form.search.keyword}"></span>
+                <input th:field="*{keyword}" th:placeholder="#{form.search.keyword}+...">
+            </label>
+            <p th:errors="*{keyword}"></p><!--validation: show message error-->
+            <label>
+                <span th:text="#{form.search.currentPage}"></span>
+                <input th:field="*{currentPage}" th:placeholder="#{form.search.currentPage}+...">
+            </label>
+            <label>
+                <span th:text="#{form.search.size}"></span>
+                <input th:field="*{size}" th:placeholder="#{form.search.size}+...">
+            </label>
+            <label>
+                <span th:text="#{form.search.sortedField}"></span>
+                <select th:field="*{sortedField}">
+                    <option value="" th:text="#{form.search.select}"></option>
+                    <option value="id">id</option>
+                    <option value="name" th:text="#{user.name}"></option>
+                    <option value="age" th:text="#{user.age}"></option>
+                    <option value="username" th:text="#{user.username}"></option>
+                </select>
+            </label>
+            <button type="submit" th:text="#{form.search.searchBtn}"></button>
+        </form>
+        <div class="_new"><a th:href="@{/user/new}" th:text="#{user.title.new}"></a></div>
+    </div>
+    <div class="table_wrap_scroll">
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th th:text="#{user.name}"></th>
+                <th th:text="#{user.age}"></th>
+                <th th:text="#{user.username}"></th>
+                <th th:text="#{user.homeAddress}"></th>
+                <th th:text="#{user.department}"></th>
+                <th th:text="#{user.birthdate}"></th>
+                <th th:text="#{user.avatarUrl}"></th>
+                <th th:text="#{global.table.action}"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${userList}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.age}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.homeAddress}"></td>
+                <td th:text="${user.department?.name}"></td>
+                <td th:text="${#dates.format(user.birthdate, 'dd/MM/yyyy')}"></td><!--convert date-->
+                <td>
+                    <img th:src="@{'/user/download?filename=' + ${user?.avatarUrl}}" alt="" style="max-height: 16px">
+                </td>
+                <td>
+                    <a th:href="@{'/user/edit?id=' + ${user.id}}" th:text="#{global.edit}"></a> |
+                    <a th:href="@{'/user/delete?id=' + ${user.id}}" th:text="#{global.delete}"></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <span><span th:text="#{global.pagination.totalPage}"></span>: <b th:text="${totalPage}"></b></span> |
+        <span><span th:text="#{global.pagination.totalElements}"></span>: <b th:text="${totalElements}"></b></span>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<html layout:decorate="~{template}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><title>Error</title></head>
+<body>
+<div layout:fragment="content">
+    <h1>Error</h1>
+    <div class="">
+        <p>Error: </p>
+        <p style="font-size: 13px;" th:text="${err}"></p>
+        <p th:text="${err_detail}"></p>
+    </div>
+</div>
+</body>
+</html>

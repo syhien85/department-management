@@ -1,0 +1,30 @@
+<div class="header d_flex" th:fragment="header">
+    <svg xmlns="http://www.w3.org/2000/svg" width="51" height="33" viewBox="0 0 1024 672">
+        <path d="M896,160H128A128.026,128.026,0,0,0,0,288V704A128.006,128.006,0,0,0,128,832H896a128.006,128.006,0,0,0,128-128V288A128.026,128.026,0,0,0,896,160ZM64,328,287.968,496,64,664V328ZM960,704a64.064,64.064,0,0,1-64,64H128a64.044,64.044,0,0,1-64-64L314.624,516,454.4,620.864a95.952,95.952,0,0,0,115.168,0L709.376,516Zm0-40L736,496,960,328ZM550.368,595.264a63.952,63.952,0,0,1-76.768,0L64,288a64.064,64.064,0,0,1,64-64H896a64.085,64.085,0,0,1,64,64L550.368,595.264Z"
+              transform="translate(0 -160)" fill="#444"/>
+    </svg>
+    <p th:text="#{global.table.siteTitle}"><!--Hệ thống tiếp nhận ý kiến chăm sóc khách hàng--></p>
+    <div class="header_lang" style="margin-left: auto">
+        <a href="?lang=vi">VI</a> |
+        <a href="?lang=en">EN</a>
+    </div>
+
+</div>
+<div class="sidebar" th:fragment="sidebar">
+    <ul>
+        <li><a th:href="@{/ticket/list}" th:text="#{ticket.title.list}"><!--Ticket List--></a></li>
+        <li><a th:href="@{/department/list}" th:text="#{department.title.list}"><!--Department List--></a></li>
+        <li><a th:href="@{/user/list}" th:text="#{user.title.list}"><!--User List--></a></li>
+    </ul>
+</div>
+<div th:fragment="footer">
+    <!--<style>.footer .wrap>div{border-top:1px solid #ddd;padding-top:16px;margin-top:32px}.footer p{text-align:center}</style>-->
+    <!-- <p>It's not looking good brev</p> -->
+</div>
+
+<div th:fragment="breadcrumb(link,title)" class="breadcrumb">
+    <span><a th:href="@{${link}}" th:text="#{${title}}"></a></span>
+    <span> > </span>
+    <span>...</span>
+</div>
+

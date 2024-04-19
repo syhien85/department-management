@@ -1,0 +1,17 @@
+<html layout:decorate="~{template}" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head><title>Login</title></head>
+<body>
+<div layout:fragment="content">
+    <h1>Login</h1>
+    <form class="form_post" th:action="@{/login}" method="post">
+        <label>
+            <input type="text" name="username" placeholder="username...">
+        </label>
+        <label>
+            <input type="text" name="password" placeholder="password...">
+        </label>
+        <button type="submit">Login</button>
+    </form>
+</div>
+</body>
+</html>
